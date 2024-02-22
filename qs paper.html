@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Fluency Question Paper</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+        }
+        .question {
+            margin-bottom: 20px;
+        }
+        input[type="text"] {
+            width: 100%;
+            box-sizing: border-box;
+            margin-top: 5px;
+        }
+        input[type="submit"] {
+            width: 100%;
+            padding: 10px;
+            box-sizing: border-box;
+        }
+        .result {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Digital Fluency Question Paper</h1>
+
+    <form id="quizForm" onsubmit="submitForm(event)">
+        <label for="userName">Your Name:</label>
+        <input type="text" id="userName" name="userName" required>
+
+        <div class="question">
+            <p><strong>Question 1:</strong> What does IoT stand for?</p>
+            <input type="text" id="q1Answer" name="q1Answer" placeholder="Your answer" required>
+        </div>
+
+        <div class="question">
+            <p><strong>Question 2:</strong> What is the purpose of a firewall?</p>
+            <input type="text" id="q2Answer" name="q2Answer" placeholder="Your answer" required>
+        </div>
+
+        <!-- Add more questions as needed -->
+
+        <input type="submit" value="Submit">
+    </form>
+
+    <div id="resultContainer" style="display: none;">
+        <h2>Quiz Results</h2>
+
+        <div class="result">
+            <p><strong>Name:</strong> <span id="userNameResult"></span></p>
+        </div>
+
+        <div class="result">
+            <p><strong>Question 1:</strong> <span id="q1AnswerResult"></span></p>
+        </div>
+
+        <div class="result">
+            <p><strong>Question 2:</strong> <span id="q2AnswerResult"></span></p>
+        </div>
+
+        <!-- Add more result sections as needed -->
+    </div>
+
+    <script>
+        function submitForm(event) {
+            event.preventDefault();
+
+            var form = document.getElementById('quizForm');
+            var formData = new FormData(form);
+
+            var queryString = new URLSearchParams(formData).toString();
+
+            // Display results
+            document.getElementById('userNameResult').textContent = formData.get('userName');
+            document.getElementById('q1AnswerResult').textContent = formData.get('q1Answer');
+            document.getElementById('q2AnswerResult').textContent = formData.get('q2Answer');
+
+            // Hide form and show results container
+            document.getElementById('quizForm').style.display = 'none';
+            document.getElementById('resultContainer').style.display = 'block';
+        }
+    </script>
+
+</body>
+</html>
