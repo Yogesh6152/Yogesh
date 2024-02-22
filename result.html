@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz Results</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            tex-align: center;
+        }
+        .result {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Quiz Results</h1>
+
+    <div class="result">
+        <p><strong>Name:</strong> <span id="userName"></span></p>
+    </div>
+
+    <div class="result">
+        <p><strong>Question 1:</strong> <span id="q1Answer"></span></p>
+    </div>
+
+    <div class="result">
+        <p><strong>Question 2:</strong> <span id="q2Answer"></span></p>
+    </div>
+
+    <!-- Add more result sections as needed -->
+
+    <script>
+        // Retrieve and display answers and user name from the URL parameters
+        document.getElementById('userName').textContent = getParameterByName('userName');
+        document.getElementById('q1Answer').textContent = getParameterByName('q1Answer');
+        document.getElementById('q2Answer').textContent = getParameterByName('q2Answer');
+
+        // Function to get URL parameters by name
+        function getParameterByName(name) {
+            var urlParams = new URLSearchParams(window.location.search);
+            return urlParams.get(name);
+        }
+    </script>
+
+</body>
+</html>
